@@ -1,4 +1,5 @@
 import React from 'react'
+import AppLayout from '../components/layout/AppLayout';
 
 function Groups() {
   return (
@@ -6,4 +7,4 @@ function Groups() {
   )
 }
 
-export default Groups
+export default AppLayout()(Groups);
