@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense, lazy, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import {
     AppBar,
@@ -16,91 +16,131 @@ import {
     Logout as LogoutIcon,
     Notifications as NotificationsIcon,
 } from "@mui/icons-material";
+import { orange } from '@mui/material/colors';
+
+//lazy loads
+const SearchDialog = lazy(() => import("../specific/Search"));
+const NotifcationDialog = lazy(() => import("../specific/Notifications"));
+const NewGroupDialog = lazy(() => import("../specific/NewGroup"));
 
 function Header() {
     const navigate = useNavigate();
-    const handleMobile = () => console.log("mobile");
+
+    /*
+    remove after inplementing redux
+    */
+    const [isSearch, setIsSearch] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isNewGroup, setIsNewGroup] = useState(false)
+    const [isNotification, setIsNotification] = useState(false);
+
+    const handleMobile = () => {
+        console.log("mobile");
+        setIsMobile((prev) => !prev);
+    }
 
     const logoutHandler = () => console.log("logout");
-    const openSearch = () => console.log("y!!");
+    const openSearch = () => {
+        setIsSearch((prev) => !prev);
+    }
     const openNewGroup = () => {
-        console.log("new group");
+        setIsNewGroup((prev) => !prev);
     };
     const openNotification = () => {
-        console.log("sbcsj");
+        setIsNotification((prev) => !prev);
     };
 
     const navigateToGroup = () => navigate("/groups");
     return (
-        <Box sx={{ flexGrow: 1 }} height={"4rem"}>
-            <AppBar
-                position="static"
-                sx={{
-                    bgcolor: orange,
-                }}
-            >
-                <Toolbar>
-                    <Typography
-                        variant="h6"
-                        sx={{
-                            display: { xs: "none", sm: "block" },
-                        }}
-                    >
-                        Chat-App
-                    </Typography>
+        <>
+            <Box sx={{ flexGrow: 1 }} height={"4rem"}>
+                <AppBar
+                    position="static"
+                    sx={{
+                        bgcolor: orange,
+                    }}
+                >
+                    <Toolbar>
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                display: { xs: "none", sm: "block" },
+                            }}
+                        >
+                            Chat-App
+                        </Typography>
 
-                    <Box
-                        sx={{
-                            display: { xs: "block", sm: "none" },
-                        }}
-                    >
-                        <IconButton color="inherit" onClick={handleMobile}>
-                            <MenuIcon />
-                        </IconButton>
-                    </Box>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                        }}
-                    />
-                    <Box>
-                        <IconBtn
-                            title={"Search"}
-                            icon={<SearchIcon />}
-                            onClick={openSearch}
-
+                        <Box
+                            sx={{
+                                display: { xs: "block", sm: "none" },
+                            }}
+                        >
+                            <IconButton color="inherit" onClick={handleMobile}>
+                                <MenuIcon />
+                            </IconButton>
+                        </Box>
+                        <Box
+                            sx={{
+                                flexGrow: 1,
+                            }}
                         />
+                        <Box>
+                            <IconBtn
+                                title={"Search"}
+                                icon={<SearchIcon />}
+                                onClick={openSearch}
 
-                        <IconBtn
-                            title={"New Group"}
-                            icon={<AddIcon />}
-                            onClick={openNewGroup}
+                            />
 
-                        />
+                            <IconBtn
+                                title={"New Group"}
+                                icon={<AddIcon />}
+                                onClick={openNewGroup}
 
-                        <IconBtn
-                            title={"Manage Groups"}
-                            icon={<GroupIcon />}
-                            onClick={navigateToGroup}
+                            />
 
-                        />
+                            <IconBtn
+                                title={"Manage Groups"}
+                                icon={<GroupIcon />}
+                                onClick={navigateToGroup}
 
-                        <IconBtn
-                            title={"Notifications"}
-                            icon={<NotificationsIcon />}
-                            onClick={openNotification}
+                            />
 
-                        />
+                            <IconBtn
+                                title={"Notifications"}
+                                icon={<NotificationsIcon />}
+                                onClick={openNotification}
 
-                        <IconBtn
-                            title={"Logout"}
-                            icon={<LogoutIcon />}
-                            onClick={logoutHandler}
-                        />
-                    </Box>
-                </Toolbar>
-            </AppBar>
-        </Box>
+                            />
+
+                            <IconBtn
+                                title={"Logout"}
+                                icon={<LogoutIcon />}
+                                onClick={logoutHandler}
+                            />
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+            </Box>
+            {isSearch && (
+                <Suspense fallback={<div>Loading...</div>}>
+                    <SearchDialog />
+                </Suspense>
+            )}
+            {isNotification && (
+                <Suspense fallback={<div>Loading...</div>}>
+                    <NotifcationDialog />
+                </Suspense>
+            )}
+
+            {isNewGroup && (
+                <Suspense fallback={<div>Loading...</div>}>
+                    <NewGroupDialog />
+                </Suspense>
+            )}
+
+
+        </>
     )
 }
 
