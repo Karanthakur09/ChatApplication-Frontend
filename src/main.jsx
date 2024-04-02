@@ -8,7 +8,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HelmetProvider>
       <CssBaseline />
-      <App />
+      {/* don't need default right click behaviour */}
+      <div onContextMenu={(e) => e.preventDefault()}>
+        <App />
+      </div>
     </HelmetProvider>
   </React.StrictMode>,
 )

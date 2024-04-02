@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import {
     AppBar,
+    Backdrop,
     Box,
     IconButton,
     Toolbar,
@@ -123,18 +124,18 @@ function Header() {
                 </AppBar>
             </Box>
             {isSearch && (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Backdrop open/>}>
                     <SearchDialog />
                 </Suspense>
             )}
             {isNotification && (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Backdrop open/>}>
                     <NotifcationDialog />
                 </Suspense>
             )}
 
             {isNewGroup && (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Backdrop open/>}>
                     <NewGroupDialog />
                 </Suspense>
             )}

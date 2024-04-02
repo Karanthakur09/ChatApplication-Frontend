@@ -23,7 +23,7 @@ function App() {
               <Home />
             } />
             <Route path='/groups' element={<h1>V</h1>} />
-            <Route path='/chat/:chatId' element={<h1>V</h1>} />
+            <Route path='/chat/:chatId' element={<Chat />} />
           </Route>
           <Route path='/login' element={
             <ProtectRoute user={!user} redirect='/'>
