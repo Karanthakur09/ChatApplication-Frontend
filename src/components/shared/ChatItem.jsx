@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material'
 import React, { memo } from 'react'
 import { Link } from '../styles/StyleComponents'
+import AvatarCard from './AvatarCard'
 
 
 const ChatItem = (
@@ -39,6 +40,8 @@ const ChatItem = (
         padding: "1rem",
       }}
     >
+      <AvatarCard/>
+
       
 
       <Stack>
