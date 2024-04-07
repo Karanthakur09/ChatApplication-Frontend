@@ -1,22 +1,22 @@
 import { Avatar, Button, Dialog, DialogTitle, ListItem, Skeleton, Stack, Typography } from '@mui/material'
-import React from 'react'
+import React, { memo } from 'react'
+import { sampleNotifications } from '../../constants/sampleData';
 
 const Notifications = () => {
+
   const friendRequestHandler = ({ _id, accept }) => {
     //add friend request handler
     
   };
+
   return (
-    <Dialog open={isNotification} onClose={closeHandler}>
+    <Dialog open>
       <Stack p={{ xs: "1rem", sm: "2rem" }} maxWidth={"25rem"}>
         <DialogTitle>Notifications</DialogTitle>
 
-        {isLoading ? (
-          <Skeleton />
-        ) : (
-          <>
-            {data?.allRequests.length > 0 ? (
-              data?.allRequests?.map(({ sender, _id }) => (
+
+            {sampleNotifications.length > 0 ? (
+              sampleNotifications.map(({ sender, _id }) => (
                 <NotificationItem
                   sender={sender}
                   _id={_id}
@@ -27,8 +27,7 @@ const Notifications = () => {
             ) : (
               <Typography textAlign={"center"}>0 notifications</Typography>
             )}
-          </>
-        )}
+        
       </Stack>
     </Dialog>
 
