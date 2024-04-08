@@ -23,7 +23,7 @@ const NewGroup = () => {
   const [selectedMembers, setSelectedMembers] = useState([]);
   const selectMemberHandler = (id) => {
     // setMembers(prev => prev.map(user => user._id === id ? { ...user, isAdded: !user.isAdded } : user))
-   
+
     setSelectedMembers((prev) =>
       prev.includes(id)
         ? prev.filter((currElement) => currElement !== id)
@@ -34,7 +34,7 @@ const NewGroup = () => {
   const groupName = useInputValidation("");
 
   return (
-    <Dialog open>
+    <Dialog open onClose={closeHandler}>
       <Stack p={{ xs: "1rem", sm: "3rem" }} width={"25rem"} spacing={"2rem"}>
         <DialogTitle textAlign={"center"} variant="h4">
           New Group

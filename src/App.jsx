@@ -22,7 +22,7 @@ function App() {
             <Route path='/' element={
               <Home />
             } />
-            <Route path='/groups' element={<h1>V</h1>} />
+            <Route path='/groups' element={<Groups />} />
             <Route path='/chat/:chatId' element={<Chat />} />
           </Route>
           <Route path='/login' element={
