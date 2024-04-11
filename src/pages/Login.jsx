@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { VisuallyHiddenInput } from '../components/styles/StyleComponents';
 import { usernameValidator } from '../../utils/validators';
+import { bgGradient } from '../constants/color';
 
 //basic functions for handling state of login or register to navigate
 function Login() {

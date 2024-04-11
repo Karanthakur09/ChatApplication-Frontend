@@ -9,7 +9,7 @@ const Login = lazy(() => import("./pages/Login"));
 const Chat = lazy(() => import("./pages/Chat"));
 const Groups = lazy(() => import("./pages/Groups"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-// const NotFound = lazy(() => import("./pages/NotFound"));
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"))
 
 let user = true;
 
@@ -29,6 +29,7 @@ function App() {
             <ProtectRoute user={!user} redirect='/'>
               <Login />
             </ProtectRoute>} />
+          <Route path='/admin' element={<AdminLogin />} />
 
           <Route path='*' element={<NotFound />} />
 

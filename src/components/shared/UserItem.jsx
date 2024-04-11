@@ -15,10 +15,9 @@ const UserItem = ({ user,
         alignItems={"center"}
         spacing={"1rem"}
         width={"100%"}
-
+        {...styling}
       >
         <Avatar />
-
         <Typography
           variant="body1"
           sx={{

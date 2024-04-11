@@ -8,7 +8,7 @@ import {
   KeyboardBackspace as KeyboardBackspaceIcon,
   Menu as MenuIcon,
 } from "@mui/icons-material";
-import { Link } from "../components/styles/StyledComponents";
+import { Link } from "../components/styles/StyleComponents";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   Backdrop,
@@ -24,10 +24,12 @@ import {
   Typography,
 } from "@mui/material";
 import { samepleChats } from '../constants/sampleData';
+import { matBlack } from '../constants/color';
+import AvatarCard from '../components/shared/AvatarCard';
 
 function Groups() {
   //random chatt id for now will use later in redux
-  const chatId="1133"
+  const chatId=useSearchParams()[0].get("group");
 
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
