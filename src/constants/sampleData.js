@@ -79,6 +79,8 @@ export const sampleMessage = [
   },
 ];
 
+
+//sample data for the dashboard remember in chats we individual having avatar for each 
 export const dashboardData = {
   users: [
     {
