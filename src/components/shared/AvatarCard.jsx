@@ -1,8 +1,8 @@
-import { Avatar, AvatarGroup, Box, Stack } from '@mui/material'
-import React from 'react'
-import { transformImage } from '../../lib/features'
-// import { transformImage } from "../../lib/features";
+import { Avatar, AvatarGroup, Box, Stack } from "@mui/material";
+import React from "react";
+import { transformImage } from "../../lib/features";
 
+// Todo Transform
 const AvatarCard = ({ avatar = [], max = 4 }) => {
   return (
     <Stack direction={"row"} spacing={0.5}>
@@ -32,8 +32,7 @@ const AvatarCard = ({ avatar = [], max = 4 }) => {
         </Box>
       </AvatarGroup>
     </Stack>
+  );
+};
 
-  )
-}
-
-export default AvatarCard
+export default AvatarCard;

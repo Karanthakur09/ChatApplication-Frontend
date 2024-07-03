@@ -1,24 +1,26 @@
 import {
-    Close as CloseIcon,
-    Dashboard as DashboardIcon,
-    ExitToApp as ExitToAppIcon,
-    Groups as GroupsIcon,
-    ManageAccounts as ManageAccountsIcon,
-    Menu as MenuIcon,
-    Message as MessageIcon,
-  } from "@mui/icons-material";
-  import {
-    Box,
-    Drawer,
-    Grid,
-    IconButton,
-    Stack,
-    Typography,
-    styled,
-  } from "@mui/material";
-  import React, { useState } from "react";
-  import { Link as LinkComponent, Navigate, useLocation } from "react-router-dom";
-  import { grayColor, matBlack } from "../../constants/color";
+  Close as CloseIcon,
+  Dashboard as DashboardIcon,
+  ExitToApp as ExitToAppIcon,
+  Groups as GroupsIcon,
+  ManageAccounts as ManageAccountsIcon,
+  Menu as MenuIcon,
+  Message as MessageIcon,
+} from "@mui/icons-material";
+import {
+  Box,
+  Drawer,
+  Grid,
+  IconButton,
+  Stack,
+  Typography,
+  styled,
+} from "@mui/material";
+import React, { useState } from "react";
+import { Link as LinkComponent, Navigate, useLocation } from "react-router-dom";
+import { grayColor, matBlack } from "../../constants/color";
+import { useDispatch, useSelector } from "react-redux";
+import { adminLogout } from "../../redux/thunks/admin";
 
 const Link = styled(LinkComponent)`
   text-decoration: none;
@@ -53,13 +55,12 @@ const adminTabs = [
   },
 ];
 
-let isAdmin =true;
-
 const Sidebar = ({ w = "100%" }) => {
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const logoutHandler = () => {
-    console.log("logout");
+    dispatch(adminLogout());
   };
 
   return (
@@ -102,7 +103,7 @@ const Sidebar = ({ w = "100%" }) => {
 };
 
 const AdminLayout = ({ children }) => {
-  
+  const { isAdmin } = useSelector((state) => state.auth);
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -149,4 +150,5 @@ const AdminLayout = ({ children }) => {
     </Grid>
   );
 };
-export default AdminLayout
+
+export default AdminLayout;
