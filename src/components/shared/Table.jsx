@@ -1,10 +1,9 @@
-
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Container, Paper, Typography } from "@mui/material";
 import { matBlack } from "../../constants/color";
 
-const Table = ({ rows=100, columns=5, heading="abc", rowHeight = 52 }) => {
+const Table = ({ rows, columns, heading, rowHeight = 52 }) => {
   return (
     <Container
       sx={{

@@ -56,11 +56,16 @@ const CurveButton = styled("button")`
   }
 `;
 
+const BouncingSkeleton = styled(Skeleton)(() => ({
+  animation: `${bounceAnimation} 1s infinite`,
+}));
+
 export {
 
     VisuallyHiddenInput,
     Link,
     InputBox,
     SearchField,
-    CurveButton
+    CurveButton,
+    BouncingSkeleton
 };
